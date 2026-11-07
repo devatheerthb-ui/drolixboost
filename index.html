@@ -100,5 +100,29 @@
     </footer>
 
     <script src="script.js"></script>
+    
+<section id="payment" style="max-width:500px;margin:50px auto;padding:28px;background:#171522;color:white;border:1px solid #51316c;border-radius:20px;text-align:center;font-family:Arial,sans-serif">
+  <h2 style="color:#c084fc">Complete Your Payment</h2>
+  <p style="color:#bbb;margin:15px 0">Scan the QR code using any UPI app.</p>
+
+  <img
+    src="payment-qr.png"
+    alt="DrolixBoost UPI payment QR code"
+    style="display:block;width:100%;max-width:300px;margin:20px auto;background:white;border-radius:12px"
+  >
+
+  <p style="margin:15px 0 8px">UPI ID</p>
+  <strong id="upi-id">devatheerthb@okhdfcbank</strong>
+
+  <button
+    onclick="navigator.clipboard.writeText('devatheerthb@okhdfcbank').then(()=>alert('UPI ID copied!'))"
+    style="display:block;margin:18px auto;padding:12px 22px;background:#9333ea;color:white;border:0;border-radius:8px;cursor:pointer"
+  >Copy UPI ID</button>
+
+  <p style="color:#bbb;font-size:13px;line-height:1.6">
+    Pay the exact amount shown for your order. Submit your transaction reference with your order.
+    Orders are confirmed only after payment is verified.
+  </p>
+</section>
 </body>
 </html>

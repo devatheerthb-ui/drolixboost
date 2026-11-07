@@ -4,666 +4,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DrolixBoost | Social Growth Store</title>
-<meta name="theme-color" content="#100719">
-
+<title>DROLIXBOOST</title>
 <style>
-:root {
-  --bg:#0b0712; --panel:#171020; --pink:#f02c9b;
-  --purple:#8b35f1; --text:#fff; --muted:#c3b6d2;
-  --border:#382447;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth;overflow-x:clip}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;overflow-x:clip
-}
-button,input,select {font:inherit}
-button {cursor:pointer}
-header {
-  position:sticky;top:0;z-index:10;background:#100a1bf5;
-  border-bottom:1px solid var(--border);padding:17px 5%;
-  display:flex;align-items:center;justify-content:space-between;gap:15px
-}
-.logo {font-size:23px;font-weight:900;letter-spacing:-1px}
-.logo span {color:#d54cff}
-nav {display:flex;gap:20px;flex-wrap:wrap}
-a {color:var(--text);text-decoration:none}
-nav a {font-size:14px;color:var(--muted)}
-.hero {
-  text-align:center;padding:72px 20px 60px;
-  background:radial-gradient(ellipse at 50% 0,#592078 0%,#190d28 44%,var(--bg) 78%)
-}
-.eyebrow {color:#f17cff;font-size:12px;font-weight:900;letter-spacing:3px}
-h1 {font-size:clamp(35px,7vw,66px);line-height:1.05;margin:18px 0}
-.gradient {
-  background:linear-gradient(90deg,#ff46ad,#b35aff,#ffcf46);
-  color:transparent;background-clip:text
-}
-.hero p {color:var(--muted);line-height:1.8;max-width:650px;margin:15px auto 25px}
-.btn {
-  border:0;border-radius:12px;padding:13px 20px;font-weight:800;
-  color:#fff;background:linear-gradient(100deg,var(--pink),var(--purple));
-  display:inline-block
-}
-.btn:hover {filter:brightness(1.12)}
-.btn.secondary {background:#24182f;border:1px solid #56376d}
-.section {max-width:1250px;margin:auto;padding:58px 22px}
-.heading {margin-bottom:27px}
-.heading h2 {font-size:clamp(25px,4vw,35px);margin:8px 0}
-.heading p {color:var(--muted);line-height:1.7}
-.tabs {display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}
-.tab {
-  padding:10px 15px;border-radius:30px;background:#191020;
-  color:#eee;border:1px solid var(--border)
-}
-.tab.active {background:linear-gradient(90deg,var(--pink),var(--purple));border-color:transparent}
-.grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.service {
-  background:linear-gradient(145deg,#21152e,#120d1a);
-  border:1px solid var(--border);border-radius:18px;padding:20px;min-width:0
-}
-.service h3 {font-size:19px;margin:0 0 7px}
-.desc {font-size:13px;color:var(--muted);margin:0 0 17px}
-.packages {display:grid;gap:9px}
-.package {
-  display:flex;align-items:center;justify-content:space-between;gap:8px;
-  background:#0f0a17;border:1px solid #32213f;border-radius:11px;
-  padding:11px 10px;min-width:0
-}
-.package-name {font-size:13px;font-weight:700;overflow-wrap:anywhere}
-.price {color:#ff83d0;font-weight:900;white-space:nowrap}
-.add {
-  flex-shrink:0;border:0;border-radius:8px;padding:8px 10px;
-  background:#7025a8;color:white;font-weight:800
-}
-.add:hover {background:#a52fe1}
-.combo .service {position:relative}
-.combo-label {font-size:11px;color:#f5a2ff;font-weight:900;letter-spacing:1px}
-.combo .price {font-size:30px;margin:18px 0}
-.combo ul {padding-left:19px;color:var(--muted);line-height:1.9;font-size:13px}
-.combo .add {width:100%;padding:12px;margin-top:10px}
-#cart {scroll-margin-top:90px}
-.cart-layout {display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
-.panel {background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;min-width:0}
-.cart-row {
-  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;
-  padding:13px 0;border-bottom:1px solid var(--border)
-}
-.cart-row small {display:block;color:var(--muted);margin-top:5px}
-.qty {display:flex;align-items:center;gap:8px;margin-top:8px}
-.qty button {background:#382047;color:#fff;border:0;border-radius:6px;padding:5px 10px}
-.remove {background:none;color:#ff8cbf;border:0;font-size:12px;margin-top:5px}
-.total-line {display:flex;justify-content:space-between;gap:10px;margin:15px 0}
-.total-line strong {font-size:24px;color:#ff83d0}
-.empty {color:var(--muted);line-height:1.7}
-.field {margin:14px 0}
-.field label {display:block;margin-bottom:7px;font-size:13px;color:#e4d7ed}
-.field input,.field select {
-  width:100%;min-width:0;background:#0e0915;border:1px solid #4a3458;
-  border-radius:10px;padding:13px;color:white
-}
-.check {display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:12px;line-height:1.6}
-.check input {margin-top:3px}
-#payment {scroll-margin-top:90px}
-.payment-layout {display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
-.qr-box {text-align:center}
-.qr-box img {width:100%;max-width:330px;border-radius:14px;background:white;padding:8px}
-.amount {font-size:40px;font-weight:900;color:#ff83d0;margin:12px 0}
-.note {font-size:12px;color:var(--muted);line-height:1.8}
-.hidden {display:none!important}
-footer {border-top:1px solid var(--border);padding:28px 20px;text-align:center;color:var(--muted);font-size:12px}
-.toast {padding:12px;border-radius:10px;background:#20341f;color:#c6ffc3;font-size:13px;line-height:1.6;margin:12px 0}
-@media(max-width:850px) {
- .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
- .cart-layout,.payment-layout {grid-template-columns:1fr}
-}
-@media(max-width:550px) {
- header {padding:14px;flex-wrap:wrap}
- .logo {font-size:20px}
- nav {gap:12px}
- nav a {font-size:12px}
- .hero {padding:55px 17px}
- .section {padding:43px 15px}
- .grid {grid-template-columns:minmax(0,1fr)}
- .panel {padding:16px}
- .package {gap:6px}
- .package-name {font-size:12px}
- .add {padding:8px}
-}
-  
-/* Added-to-bag notification */
-.bag-toast {
-  position: fixed;
-  right: 20px;
-  bottom: 24px;
-  z-index: 9999;
-  width: min(360px, calc(100% - 32px));
-  padding: 18px;
-  border: 1px solid #6e3b91;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #251332, #110b1b);
-  box-shadow: 0 12px 40px #0009;
-  animation: bagSlideIn .25s ease-out;
-}
+*{box-sizing:border-box}
+body{margin:0;background:#0b0712;color:white;font-family:Arial,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#130c20;border-bottom:1px solid #382447;padding:17px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:900;color:white}
+.logo span{color:#e34bdb}
+nav{display:flex;gap:17px}
+nav a{color:#ddd;text-decoration:none;font-size:13px}
+.hero{text-align:center;padding:65px 18px;background:radial-gradient(ellipse at top,#562071,#0b0712 75%)}
+.hero small{color:#ed85f4;letter-spacing:3px;font-weight:bold}
+.hero h1{font-size:clamp(35px,7vw,62px);margin:18px 0}
+.hero h1 span{color:#e66af2}
+.hero p{color:#c7b9d4;line-height:1.8;max-width:600px;margin:15px auto 25px}
+.btn{border:0;border-radius:10px;padding:13px 19px;color:white;font-weight:bold;background:linear-gradient(100deg,#ed369e,#8737ed)}
+.section{max-width:1200px;margin:auto;padding:50px 20px}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{font-size:30px}
+.heading p{color:#c1b2d0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card,.panel{background:linear-gradient(145deg,#241632,#130d1c);border:1px solid #49305b;border-radius:17px;padding:21px;min-width:0}
+.card h3{margin-top:0}
+.card p,.muted{color:#c5b7d0;font-size:13px;line-height:1.7}
+.card .price{font-size:27px;color:#f48bdf;font-weight:900;margin:17px 0}
+.card .btn{width:100%}
+.categories{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
+.category{background:#21152d;color:white;border:1px solid #523467;padding:10px 14px;border-radius:30px}
+.category.active{background:#a52bd0}
+#cart{scroll-margin-top:90px}
+.cartrow{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #44304f}
+.cartrow small{display:block;color:#c4b4d1;margin-top:6px}
+.qty{display:flex;gap:9px;align-items:center;margin-top:8px}
+.qty button{background:#66318b;color:white;border:0;border-radius:6px;padding:5px 10px}
+.remove{background:none;border:0;color:#ff8abf;margin-top:6px}
+.total{display:flex;justify-content:space-between;margin:17px 0;font-size:18px}
+.total strong{font-size:25px;color:#f48bdf}
+.field{margin:15px 0}
+.field label{display:block;margin-bottom:7px;font-size:13px}
+.field input{width:100%;padding:13px;border:1px solid #523967;border-radius:9px;background:#0e0915;color:white}
+#payment{scroll-margin-top:90px}
+.paylayout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.qr{text-align:center}
+.qr img{width:100%;max-width:290px;background:white;padding:8px;border-radius:12px}
+.amount{font-size:40px;color:#f48bdf;font-weight:900}
+.note{font-size:12px;color:#c2b5cf;line-height:1.7}
+footer{text-align:center;padding:30px;color:#a99bb8;border-top:1px solid #382447}
 
-.bag-toast-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
+/* ADD TO BAG POPUP */
+#bagPopup{
+ position:fixed;right:18px;bottom:20px;width:min(360px,calc(100% - 36px));
+ background:linear-gradient(145deg,#29163b,#120b1d);
+ border:1px solid #9a48bd;border-radius:18px;padding:19px;
+ box-shadow:0 12px 45px #000b;z-index:9999;
+ animation:popupIn .25s ease;
 }
-
-.bag-toast-icon {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #183e2a;
-  color: #76f6a2;
-  font-size: 23px;
+#bagPopup[hidden]{display:none}
+@keyframes popupIn{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
 }
-
-.bag-toast-title {
-  font-weight: 900;
-  color: #8dffb1;
-  margin-bottom: 5px;
+.popupTop{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.popupTick{width:43px;height:43px;border-radius:50%;background:#16462a;color:#78ffa3;display:grid;place-items:center;font-size:25px;font-weight:bold}
+.popupTitle{color:#83ffad;font-weight:900;font-size:16px}
+.popupDetail{font-size:13px;color:#d5c4e3;margin-top:5px;line-height:1.5}
+.popupButtons{display:flex;gap:9px}
+.popupButtons button{flex:1;border:0;border-radius:9px;padding:12px 6px;color:white;font-weight:bold;font-size:12px}
+.continue{background:#382342}
+.checkout{background:linear-gradient(100deg,#ed369e,#8737ed)}
+#toastCount{color:#ff9de3;font-weight:bold}
+@media(max-width:750px){
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .paylayout{grid-template-columns:1fr}
 }
-
-.bag-toast-detail {
-  font-size: 13px;
-  color: #d4c5e2;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
+@media(max-width:520px){
+ header{flex-wrap:wrap;gap:12px}
+ nav{width:100%;justify-content:space-between}
+ .grid{grid-template-columns:1fr}
+ .section{padding:40px 14px}
+ .hero{padding:50px 15px}
 }
-
-.bag-toast-actions {
-  display: flex;
-  gap: 9px;
-}
-
-.bag-toast-actions button {
-  flex: 1;
-  padding: 12px 8px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 800;
-  border: 0;
-}
-
-.bag-checkout {
-  color: white;
-  background: linear-gradient(100deg, #f02c9b, #8b35f1);
-}
-
-.bag-continue {
-  color: white;
-  background: #30203e;
-  border: 1px solid #65417e !important;
-}
-
-@keyframes bagSlideIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 480px) {
-  .bag-toast {
-    right: 12px;
-    bottom: 12px;
-    width: calc(100% - 24px);
-  }
-}
-
 </style>
 </head>
+
 <body>
+
 <header>
-  <a class="logo" href="#">DROLIX<span>BOOST</span></a>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#combos">Combos</a>
-    <a href="#cart">Cart <span id="cartCount">0</span></a>
-    <a href="#payment">Payment</a>
-  </nav>
+ <div class="logo">DROLIX<span>BOOST</span></div>
+ <nav>
+  <a href="#services">Services</a>
+  <a href="#combos">Packages</a>
+  <a href="#cart">🛒 Bag <span id="cartCount">0</span></a>
+ </nav>
 </header>
 
 <section class="hero">
-  <div class="eyebrow">YOUR SOCIAL GROWTH STORE</div>
-  <h1>Boost Your <span class="gradient">Social Reach</span></h1>
-  <p>Explore service packages, combine your selections and see your total before checkout. Choose carefully and review the provider's delivery and platform-policy terms.</p>
-  <a class="btn" href="#services">Explore Services ↓</a>
+ <small>GROW • CREATE • PROMOTE</small>
+ <h1>Boost Your <span>Social Presence</span></h1>
+ <p>Explore professional social media promotion, content creation and growth strategy packages.</p>
+ <a href="#services" class="btn">Explore Services ↓</a>
 </section>
 
 <section class="section" id="services">
-  <div class="heading">
-    <div class="eyebrow">CHOOSE YOUR SERVICE</div>
-    <h2>Social Media Packages</h2>
-    <p>Select any number of different packages. Every selection will be added to your cart.</p>
-  </div>
-  <div class="tabs" id="tabs"></div>
-  <div class="grid" id="serviceGrid"></div>
+ <div class="heading">
+  <h2>Our Services</h2>
+  <p>Choose a service to explore available packages.</p>
+ </div>
+ <div class="categories" id="categories"></div>
+ <div class="grid" id="serviceGrid"></div>
 </section>
 
-<section class="section combo" id="combos">
-  <div class="heading">
-    <div class="eyebrow">SAVE WITH BUNDLES</div>
-    <h2>Combo Offers 🔥</h2>
-    <p>Add a combo alongside individual services. The combo price is charged as listed.</p>
-  </div>
-  <div class="grid" id="comboGrid"></div>
+<section class="section" id="combos">
+ <div class="heading">
+  <h2>Special Packages 🔥</h2>
+  <p>Combined marketing and content services.</p>
+ </div>
+ <div class="grid" id="comboGrid"></div>
 </section>
 
 <section class="section" id="cart">
-  <div class="heading">
-    <div class="eyebrow">YOUR SELECTION</div>
-    <h2>Shopping Cart 🛒</h2>
-    <p>Review your packages and quantities before continuing.</p>
+ <div class="heading">
+  <h2>🛒 Your Shopping Bag</h2>
+  <p>Review your selections and total amount.</p>
+ </div>
+ <div class="panel">
+  <div id="cartItems"><p class="muted">Your bag is empty.</p></div>
+  <div class="total">
+   <span>Total</span>
+   <strong id="total">₹0</strong>
   </div>
-  <div class="cart-layout">
-    <div class="panel">
-      <div id="cartItems"><p class="empty">Your cart is empty. Add packages above to get started.</p></div>
-      <button class="btn secondary" id="clearCart" type="button">Clear Cart</button>
-    </div>
-    <div class="panel">
-      <h3>Order Details</h3>
-      <div class="field">
-        <label for="instagram">Instagram username or profile URL</label>
-        <input id="instagram" placeholder="@yourusername" required>
-      </div>
-      <div class="field">
-        <label for="customerName">Your name</label>
-        <input id="customerName" placeholder="Enter your name" required>
-      </div>
-      <div class="field">
-        <label for="contact">Contact number or email</label>
-        <input id="contact" placeholder="How can we contact you?" required>
-      </div>
-      <div class="total-line"><span>Subtotal</span><b id="subtotal">₹0</b></div>
-      <div class="total-line"><span>Delivery fee</span><b>₹0</b></div>
-      <div class="total-line"><span>Total payable</span><strong id="cartTotal">₹0</strong></div>
-      <button class="btn" style="width:100%" id="checkout" type="button">Continue to Payment →</button>
-      <p class="note">Continuing does not mean payment is verified or an order has been accepted.</p>
-    </div>
+  <div class="field">
+   <label>Your name</label>
+   <input id="customer" placeholder="Enter your name">
   </div>
+  <div class="field">
+   <label>Instagram profile URL</label>
+   <input id="profile" placeholder="https://instagram.com/yourprofile">
+  </div>
+  <div class="field">
+   <label>WhatsApp / Contact</label>
+   <input id="phone" placeholder="Your contact details">
+  </div>
+  <button class="btn" style="width:100%" id="goPayment">Continue to Payment →</button>
+ </div>
 </section>
 
-<section class="section hidden" id="payment">
-  <div class="heading">
-    <div class="eyebrow">UPI CHECKOUT</div>
-    <h2>Pay for Your Order</h2>
-    <p>Scan the QR code using your UPI app and enter the exact amount shown below.</p>
+<section class="section" id="payment" hidden>
+ <div class="heading">
+  <h2>UPI Checkout 💳</h2>
+  <p>Review the amount before making your payment.</p>
+ </div>
+ <div class="paylayout">
+  <div class="panel qr">
+   <h3>Scan & Pay</h3>
+   <img src="GooglePay_QR.png" alt="DrolixBoost UPI QR">
+   <div class="amount" id="payAmount">₹0</div>
+   <p>UPI ID: devatheerthb@okhdfcbank</p>
+   <button class="btn" id="copyUPI">Copy UPI ID</button>
   </div>
-  <div class="payment-layout">
-    <div class="panel qr-box">
-      <img src="GooglePay_QR.png" alt="DrolixBoost UPI payment QR code">
-      <h3>Scan to Pay</h3>
-      <div class="amount" id="payAmount">₹0</div>
-      <p class="note">Verify the recipient name in your UPI app before paying.</p>
-      <button class="btn secondary" id="copyUpi" type="button">Copy UPI ID</button>
-      <p id="upiText">devatheerthb@okhdfcbank</p>
-      <a class="btn" id="payApp" href="#">Open UPI App</a>
-    </div>
-    <div class="panel">
-      <h3>Order Summary</h3>
-      <div id="paymentSummary"></div>
-      <div class="total-line"><span>Total to pay</span><strong id="finalTotal">₹0</strong></div>
-      <div class="field">
-        <label for="txn">UPI transaction/reference ID</label>
-        <input id="txn" placeholder="Enter after completing payment">
-      </div>
-      <label class="check">
-        <input type="checkbox" id="paymentConfirm">
-        <span>I have completed the payment and checked the recipient and amount.</span>
-      </label>
-      <button class="btn" style="width:100%;margin-top:17px" id="finish" type="button">Prepare Order Details</button>
-      <div id="orderResult"></div>
-      <p class="note">This static website cannot verify payments or save orders on a server. The details prepared below must be sent to the store owner through a configured contact channel. Do not share UPI PINs or OTPs.</p>
-      <button class="btn secondary" style="width:100%;margin-top:8px" id="backToCart" type="button">← Back to Cart</button>
-    </div>
+  <div class="panel">
+   <h3>Order Summary</h3>
+   <div id="summary"></div>
+   <div class="total">Total <strong id="finalTotal">₹0</strong></div>
+   <p class="note">Please verify the recipient and amount in your UPI app. Payment is not automatically verified.</p>
+   <div class="field">
+    <label>UPI transaction reference</label>
+    <input id="transaction" placeholder="Transaction ID after payment">
+   </div>
+   <button class="btn" id="prepareOrder" style="width:100%">Prepare Order Details</button>
+   <p id="result" class="note"></p>
+   <button class="btn" id="backCart" style="width:100%;margin-top:12px">Back to Bag</button>
   </div>
+ </div>
 </section>
 
-<footer>
-  DrolixBoost · Social Growth Store<br>
-  Prices are in INR. Delivery and results depend on the service provider.
-  Use services in accordance with Instagram's terms and applicable rules.
-</footer>
+<!-- NOTIFICATION POPUP -->
+<div id="bagPopup" role="status" aria-live="polite" hidden>
+ <div class="popupTop">
+  <div class="popupTick">✓</div>
+  <div>
+   <div class="popupTitle">Item added to your bag!</div>
+   <div class="popupDetail" id="popupDetail"></div>
+  </div>
+ </div>
+ <div class="popupButtons">
+  <button class="continue" id="continueShopping">Continue Shopping</button>
+  <button class="checkout" id="popupCheckout">Checkout →</button>
+ </div>
+</div>
+
+<footer>DROLIXBOOST © 2026</footer>
 
 <script>
-const services = [
- {name:"Views",icon:"▶️",items:[
-  ["5K Views",29],["10K Views",49],["50K Views",149],
-  ["100K Views",239],["500K Views",699],["1M Views",1199]]},
- {name:"Likes",icon:"❤️",items:[
-  ["200 Likes",19],["500 Likes",39],["1K Likes",59],
-  ["5K Likes",129],["10K Likes",229],["50K Likes",829]]},
- {name:"Comments",icon:"💬",items:[
-  ["10 Comments",12],["50 Comments",42],["100 Comments",72],
-  ["500 Comments",299],["1K Comments",599]]},
- {name:"Shares",icon:"📤",items:[
-  ["200 Shares",19],["500 Shares",39],["1K Shares",59],
-  ["5K Shares",129],["10K Shares",229]]},
- {name:"Saves",icon:"🔖",items:[
-  ["100 Saves",29],["300 Saves",49],["500 Saves",69],
-  ["1K Saves",129],["5K Saves",499]]},
- {name:"Repost",icon:"🔁",items:[
-  ["100 Repost",29],["300 Repost",49],["500 Repost",69],
-  ["1K Repost",139],["5K Repost",499]]},
- {name:"Followers — Low Drop",icon:"👥",items:[
-  ["100 Followers",59],["300 Followers",169],["500 Followers",279],
-  ["1K Followers",419],["5K Followers",1999]]},
- {name:"Followers — High Drop",icon:"👥",items:[
-  ["100 Followers",29],["300 Followers",69],["500 Followers",99],
-  ["1K Followers",169],["5K Followers",729]]}
+// EDIT YOUR LEGITIMATE SERVICE CATALOG AND PRICES HERE.
+const services=[
+ {name:"Instagram Promotion",icon:"📣",items:[["Starter Campaign",199],["Growth Campaign",499],["Premium Campaign",999]]},
+ {name:"Reel Promotion",icon:"🎬",items:[["Starter Reel Campaign",149],["Reel Growth Campaign",349],["Premium Reel Campaign",699]]},
+ {name:"Content Creation",icon:"🎨",items:[["5 Creative Posts",299],["10 Creative Posts",549],["20 Creative Posts",999]]},
+ {name:"Content Strategy",icon:"📈",items:[["Basic Strategy",199],["Growth Strategy",499],["Premium Strategy",899]]}
 ];
 
-const combos = [
- {name:"Basic Growth Pack",label:"POPULAR",items:["10K Views","2K Likes"],price:99},
- {name:"Engagement Booster",label:"BEST VALUE",items:["50K Views","8K Likes"],price:289},
- {name:"Viral Explosion",label:"PREMIUM",items:["120K Views","40K Likes"],price:849},
- {name:"Starter Growth",label:"STARTER",items:["5K Views","1K Likes","100 Comments"],price:179},
- {name:"Engagement Pro",label:"ENGAGEMENT",items:["10K Views","5K Likes","300 Saves"],price:249},
- {name:"Social Boost",label:"SOCIAL",items:["50K Views","10K Likes","500 Shares"],price:499},
- {name:"Ultimate Growth",label:"ULTIMATE",items:["100K Views","20K Likes","1K Comments","1K Saves"],price:799},
- {name:"Viral Package",label:"VIRAL",items:["500K Views","50K Likes","5K Shares","5K Saves","5K Repost"],price:1499}
+const combos=[
+ {name:"Starter Bundle",items:["Campaign planning","Content consultation"],price:399},
+ {name:"Growth Bundle",items:["Reel promotion strategy","Content creation","Audience planning"],price:799},
+ {name:"Premium Bundle",items:["Full content strategy","Creative content","Campaign planning","Performance review"],price:1499}
 ];
 
-const cart = new Map();
-let selectedCategory = "All";
-let currentOrder = null;
-const money = n => "₹" + n.toLocaleString("en-IN");
+const cart=new Map();
+let active="All";
+let order=null;
+let popupTimer;
 
-function makeId(name, label) { return name + "::" + label; }
+const money=n=>"₹"+n.toLocaleString("en-IN");
+const id=(a,b)=>a+"::"+b;
 
-
-let bagToastTimer;
-
-function addItem(name, label, price) {
-  const id = makeId(name, label);
-
-  if (cart.has(id)) {
-    cart.get(id).qty++;
-  } else {
-    cart.set(id, { id, name, label, price, qty: 1 });
-  }
-
-  renderCart();
-
-  const toast = document.getElementById("bagToast");
-  const detail = document.getElementById("bagToastDetail");
-
-  detail.textContent =
-    label + " · " + money(price) +
-    " · " + cart.get(id).qty + " in bag";
-
-  toast.hidden = false;
-
-  clearTimeout(bagToastTimer);
-  bagToastTimer = setTimeout(() => {
-    toast.hidden = true;
-  }, 6000);
+function notify(label,price){
+ const popup=document.getElementById("bagPopup");
+ const item=cart.get(id(label.category,label.name));
+ document.getElementById("popupDetail").textContent=
+ label.name+" · "+money(price)+" · "+(item?item.qty:1)+" in bag";
+ popup.hidden=false;
+ clearTimeout(popupTimer);
+ popupTimer=setTimeout(()=>popup.hidden=true,8000);
 }
 
-document.getElementById("bagContinue").onclick = () => {
-  document.getElementById("bagToast").hidden = true;
-};
-
-document.getElementById("bagCheckout").onclick = () => {
-  document.getElementById("bagToast").hidden = true;
-  document.getElementById("cart").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-};
-
+function addItem(category,name,price){
+ const key=id(category,name);
+ if(cart.has(key))cart.get(key).qty++;
+ else cart.set(key,{category,name,price,qty:1});
+ renderCart();
+ notify({category,name},price);
 }
 
-function renderTabs() {
- const tabs = document.getElementById("tabs");
- tabs.replaceChildren();
+function renderCategories(){
+ const box=document.getElementById("categories");
+ box.replaceChildren();
  ["All",...services.map(s=>s.name)].forEach(name=>{
   const b=document.createElement("button");
-  b.className="tab"+(selectedCategory===name?" active":"");
+  b.className="category"+(active===name?" active":"");
   b.textContent=name;
-  b.type="button";
-  b.onclick=()=>{selectedCategory=name;renderTabs();renderServices()};
-  tabs.appendChild(b);
+  b.onclick=()=>{active=name;renderCategories();renderServices()};
+  box.appendChild(b);
  });
 }
 
-function renderServices() {
+function renderServices(){
  const grid=document.getElementById("serviceGrid");
  grid.replaceChildren();
- services.filter(s=>selectedCategory==="All"||s.name===selectedCategory)
- .forEach(s=>{
-  const card=document.createElement("article");
-  card.className="service";
-  const title=document.createElement("h3");
-  title.textContent=s.icon+" "+s.name;
-  const desc=document.createElement("p");
-  desc.className="desc";
-  desc.textContent="Choose a package to add to your cart.";
-  const list=document.createElement("div");
-  list.className="packages";
-  s.items.forEach(([label,price])=>{
+ services.filter(s=>active==="All"||active===s.name).forEach(s=>{
+  const card=document.createElement("div");
+  card.className="card";
+  const h=document.createElement("h3");
+  h.textContent=s.icon+" "+s.name;
+  card.appendChild(h);
+  const p=document.createElement("p");
+  p.textContent="Choose a package:";
+  card.appendChild(p);
+  s.items.forEach(([name,price])=>{
    const row=document.createElement("div");
-   row.className="package";
-   const name=document.createElement("span");
-   name.className="package-name";
-   name.textContent=label;
-   const cost=document.createElement("span");
-   cost.className="price";
-   cost.textContent=money(price);
-   const add=document.createElement("button");
-   add.className="add";
-   add.textContent="+ Add";
-   add.type="button";
-   add.onclick=()=>addItem(s.name,label,price);
-   row.append(name,cost,add);
-   list.appendChild(row);
+   row.style.cssText="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid #49305b";
+   const text=document.createElement("span");
+   text.textContent=name+" · "+money(price);
+   text.style.fontSize="13px";
+   const button=document.createElement("button");
+   button.className="btn";
+   button.textContent="+ Add";
+   button.style.padding="9px";
+   button.onclick=()=>addItem(s.name,name,price);
+   row.append(text,button);
+   card.appendChild(row);
   });
-  card.append(title,desc,list);
   grid.appendChild(card);
  });
 }
 
-function renderCombos() {
+function renderCombos(){
  const grid=document.getElementById("comboGrid");
  grid.replaceChildren();
  combos.forEach(c=>{
-  const card=document.createElement("article");
-  card.className="service";
-  const label=document.createElement("div");
-  label.className="combo-label";
-  label.textContent="✦ "+c.label;
-  const title=document.createElement("h3");
-  title.style.marginTop="14px";
-  title.textContent=c.name;
-  const list=document.createElement("ul");
-  c.items.forEach(item=>{
-   const li=document.createElement("li");
-   li.textContent=item;
-   list.appendChild(li);
-  });
+  const card=document.createElement("div");
+  card.className="card";
+  const h=document.createElement("h3");
+  h.textContent="✨ "+c.name;
+  const list=document.createElement("p");
+  list.textContent=c.items.join(" • ");
   const price=document.createElement("div");
   price.className="price";
   price.textContent=money(c.price);
-  const add=document.createElement("button");
-  add.className="add";
-  add.textContent="Add Combo +";
-  add.type="button";
-  add.onclick=()=>addItem("Combo",c.name,c.price);
-  card.append(label,title,list,price,add);
+  const b=document.createElement("button");
+  b.className="btn";
+  b.textContent="+ Add Bundle";
+  b.onclick=()=>addItem("Combo",c.name,c.price);
+  card.append(h,list,price,b);
   grid.appendChild(card);
  });
 }
 
-function renderCart() {
+function renderCart(){
  const box=document.getElementById("cartItems");
  box.replaceChildren();
- let count=0,total=0;
- cart.forEach(item=>{
+ let total=0,count=0;
+ cart.forEach((item,key)=>{
   count+=item.qty;
   total+=item.price*item.qty;
   const row=document.createElement("div");
-  row.className="cart-row";
+  row.className="cartrow";
   const left=document.createElement("div");
   const title=document.createElement("b");
-  title.textContent=item.label;
+  title.textContent=item.name;
   const sub=document.createElement("small");
-  sub.textContent=item.name+" · "+money(item.price)+" each";
-  const qty=document.createElement("div");
-  qty.className="qty";
+  sub.textContent=item.category+" · "+money(item.price);
+  const controls=document.createElement("div");
+  controls.className="qty";
   const minus=document.createElement("button");
   minus.textContent="−";
-  minus.type="button";
-  minus.onclick=()=>{if(item.qty>1)item.qty--;else cart.delete(item.id);renderCart()};
-  const number=document.createElement("span");
-  number.textContent=item.qty;
+  minus.onclick=()=>{if(item.qty>1)item.qty--;else cart.delete(key);renderCart()};
+  const qty=document.createElement("span");
+  qty.textContent=item.qty;
   const plus=document.createElement("button");
   plus.textContent="+";
-  plus.type="button";
   plus.onclick=()=>{item.qty++;renderCart()};
-  qty.append(minus,number,plus);
   const remove=document.createElement("button");
   remove.className="remove";
   remove.textContent="Remove";
-  remove.type="button";
-  remove.onclick=()=>{cart.delete(item.id);renderCart()};
-  left.append(title,sub,qty,remove);
+  remove.onclick=()=>{cart.delete(key);renderCart()};
+  controls.append(minus,qty,plus);
+  left.append(title,sub,controls,remove);
   const price=document.createElement("b");
   price.textContent=money(item.price*item.qty);
   row.append(left,price);
   box.appendChild(row);
  });
- if(count===0){
+ if(!count){
   const empty=document.createElement("p");
-  empty.className="empty";
-  empty.textContent="Your cart is empty. Add packages above to get started.";
+  empty.className="muted";
+  empty.textContent="Your bag is empty. Add a package to begin!";
   box.appendChild(empty);
  }
  document.getElementById("cartCount").textContent=count;
- document.getElementById("subtotal").textContent=money(total);
- document.getElementById("cartTotal").textContent=money(total);
+ document.getElementById("total").textContent=money(total);
 }
 
-document.getElementById("clearCart").onclick=()=>{
- cart.clear();renderCart();
+document.getElementById("continueShopping").onclick=()=>{
+ document.getElementById("bagPopup").hidden=true;
 };
-document.getElementById("checkout").onclick=()=>{
- if(cart.size===0){alert("Please add at least one package first.");return}
- const username=document.getElementById("instagram").value.trim();
- const name=document.getElementById("customerName").value.trim();
- const contact=document.getElementById("contact").value.trim();
- if(!username||!name||!contact){
-  alert("Please enter your Instagram profile, name and contact details.");
-  return;
- }
- currentOrder={
-  username,name,contact,
-  items:Array.from(cart.values()).map(i=>({...i})),
-  total:Array.from(cart.values()).reduce((sum,i)=>sum+i.price*i.qty,0)
- };
- document.getElementById("payAmount").textContent=money(currentOrder.total);
- document.getElementById("finalTotal").textContent=money(currentOrder.total);
- const summary=document.getElementById("paymentSummary");
- summary.replaceChildren();
- currentOrder.items.forEach(i=>{
-  const row=document.createElement("div");
-  row.className="total-line";
-  const label=document.createElement("span");
-  label.textContent=i.label+" × "+i.qty;
-  const price=document.createElement("b");
-  price.textContent=money(i.price*i.qty);
-  row.append(label,price);
-  summary.appendChild(row);
- });
- const params=new URLSearchParams({
-  pa:"devatheerthb@okhdfcbank",
-  pn:"DrolixBoost",
-  am:currentOrder.total.toFixed(2),
-  cu:"INR",
-  tn:"DrolixBoost order"
- });
- document.getElementById("payApp").href="upi://pay?"+params.toString();
- document.getElementById("payment").classList.remove("hidden");
- document.getElementById("orderResult").replaceChildren();
- document.getElementById("txn").value="";
- document.getElementById("paymentConfirm").checked=false;
- document.getElementById("payment").scrollIntoView({behavior:"smooth"});
-};
-document.getElementById("backToCart").onclick=()=>{
+document.getElementById("popupCheckout").onclick=()=>{
+ document.getElementById("bagPopup").hidden=true;
  document.getElementById("cart").scrollIntoView({behavior:"smooth"});
 };
-document.getElementById("copyUpi").onclick=async()=>{
- try {
-  await navigator.clipboard.writeText("devatheerthb@okhdfcbank");
-  alert("UPI ID copied.");
- } catch(e) {
-  prompt("Copy this UPI ID","devatheerthb@okhdfcbank");
- }
+
+document.getElementById("goPayment").onclick=()=>{
+ if(!cart.size){alert("Please add a package first.");return}
+ const customer=document.getElementById("customer").value.trim();
+ const profile=document.getElementById("profile").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ if(!customer||!profile||!phone){alert("Please fill in all customer details.");return}
+ const total=[...cart.values()].reduce((s,i)=>s+i.price*i.qty,0);
+ order={customer,profile,phone,items:[...cart.values()].map(i=>({...i})),total};
+ document.getElementById("payAmount").textContent=money(total);
+ document.getElementById("finalTotal").textContent=money(total);
+ const summary=document.getElementById("summary");
+ summary.replaceChildren();
+ order.items.forEach(i=>{
+  const p=document.createElement("p");
+  p.textContent=i.name+" × "+i.qty+" — "+money(i.price*i.qty);
+  summary.appendChild(p);
+ });
+ document.getElementById("payment").hidden=false;
+ document.getElementById("payment").scrollIntoView({behavior:"smooth"});
 };
-document.getElementById("finish").onclick=async()=>{
- if(!currentOrder){alert("Please prepare an order first.");return}
- if(!document.getElementById("paymentConfirm").checked){
-  alert("Please confirm that you completed payment before preparing the order details.");
-  return;
- }
- const txn=document.getElementById("txn").value.trim();
- if(!txn){alert("Please enter the UPI transaction/reference ID.");return}
- const lines=[
-  "DROLIXBOOST ORDER — PAYMENT REQUIRES MANUAL VERIFICATION",
-  "Name: "+currentOrder.name,
-  "Instagram: "+currentOrder.username,
-  "Contact: "+currentOrder.contact,
-  ...currentOrder.items.map(i=>i.label+" × "+i.qty+" — "+money(i.price*i.qty)),
-  "Total: "+money(currentOrder.total),
-  "UPI transaction ID: "+txn,
-  "Please verify the payment in the receiving bank account before confirming this order."
- ];
- const text=lines.join("\n");
- const result=document.getElementById("orderResult");
- result.replaceChildren();
- const note=document.createElement("div");
- note.className="toast";
- note.textContent="Order details prepared. They have not been sent or stored automatically.";
+
+document.getElementById("backCart").onclick=()=>{
+ document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+};
+
+document.getElementById("copyUPI").onclick=async()=>{
+ try{
+  await navigator.clipboard.writeText("devatheerthb@okhdfcbank");
+  alert("UPI ID copied!");
+ }catch(e){prompt("Copy UPI ID","devatheerthb@okhdfcbank")}
+};
+
+document.getElementById("prepareOrder").onclick=()=>{
+ if(!order)return;
+ const transaction=document.getElementById("transaction").value.trim();
+ if(!transaction){alert("Enter your UPI transaction reference.");return}
+ const details=[
+ "DROLIXBOOST ORDER",
+ "Customer: "+order.customer,
+ "Profile: "+order.profile,
+ "Contact: "+order.phone,
+ ...order.items.map(i=>i.name+" x "+i.qty+" = "+money(i.price*i.qty)),
+ "TOTAL: "+money(order.total),
+ "UPI Reference: "+transaction,
+ "Payment requires manual verification."
+ ].join("\n");
+ const result=document.getElementById("result");
+ result.textContent="Order details prepared. Copy them and send to the store owner. Payment is not yet verified.";
  const copy=document.createElement("button");
  copy.className="btn";
- copy.type="button";
  copy.textContent="Copy Order Details";
  copy.onclick=async()=>{
-  try{await navigator.clipboard.writeText(text);alert("Order details copied. Send them to the store owner.");}
-  catch(e){prompt("Copy order details below:",text)}
+  try{await navigator.clipboard.writeText(details);alert("Order copied!")}
+  catch(e){prompt("Copy order details",details)}
  };
- result.append(note,copy);
+ result.appendChild(document.createElement("br"));
+ result.appendChild(copy);
 };
-renderTabs();
+
+renderCategories();
 renderServices();
 renderCombos();
 renderCart();
 </script>
-  
-<div id="bagToast" class="bag-toast" role="status"
-     aria-live="polite" hidden>
-  <div class="bag-toast-top">
-    <div class="bag-toast-icon">✓</div>
-    <div>
-      <div class="bag-toast-title">Added to your bag!</div>
-      <div id="bagToastDetail" class="bag-toast-detail"></div>
-    </div>
-  </div>
-  <div class="bag-toast-actions">
-    <button class="bag-continue" id="bagContinue" type="button">
-      Continue shopping
-    </button>
-    <button class="bag-checkout" id="bagCheckout" type="button">
-      Checkout →
-    </button>
-  </div>
-</div>
 </body>
 </html>

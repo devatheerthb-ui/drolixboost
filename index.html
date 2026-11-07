@@ -379,11 +379,47 @@ const money = n => "₹" + n.toLocaleString("en-IN");
 
 function makeId(name, label) { return name + "::" + label; }
 
+
+let bagToastTimer;
+
 function addItem(name, label, price) {
- const id = makeId(name,label);
- if(cart.has(id)) cart.get(id).qty++;
- else cart.set(id,{id,name,label,price,qty:1});
- renderCart();
+  const id = makeId(name, label);
+
+  if (cart.has(id)) {
+    cart.get(id).qty++;
+  } else {
+    cart.set(id, { id, name, label, price, qty: 1 });
+  }
+
+  renderCart();
+
+  const toast = document.getElementById("bagToast");
+  const detail = document.getElementById("bagToastDetail");
+
+  detail.textContent =
+    label + " · " + money(price) +
+    " · " + cart.get(id).qty + " in bag";
+
+  toast.hidden = false;
+
+  clearTimeout(bagToastTimer);
+  bagToastTimer = setTimeout(() => {
+    toast.hidden = true;
+  }, 6000);
+}
+
+document.getElementById("bagContinue").onclick = () => {
+  document.getElementById("bagToast").hidden = true;
+};
+
+document.getElementById("bagCheckout").onclick = () => {
+  document.getElementById("bagToast").hidden = true;
+  document.getElementById("cart").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+};
+
 }
 
 function renderTabs() {

@@ -132,9 +132,94 @@ footer {border-top:1px solid var(--border);padding:28px 20px;text-align:center;c
  .package-name {font-size:12px}
  .add {padding:8px}
 }
+  
+/* Added-to-bag notification */
+.bag-toast {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 9999;
+  width: min(360px, calc(100% - 32px));
+  padding: 18px;
+  border: 1px solid #6e3b91;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #251332, #110b1b);
+  box-shadow: 0 12px 40px #0009;
+  animation: bagSlideIn .25s ease-out;
+}
+
+.bag-toast-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.bag-toast-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #183e2a;
+  color: #76f6a2;
+  font-size: 23px;
+}
+
+.bag-toast-title {
+  font-weight: 900;
+  color: #8dffb1;
+  margin-bottom: 5px;
+}
+
+.bag-toast-detail {
+  font-size: 13px;
+  color: #d4c5e2;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.bag-toast-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.bag-toast-actions button {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  border: 0;
+}
+
+.bag-checkout {
+  color: white;
+  background: linear-gradient(100deg, #f02c9b, #8b35f1);
+}
+
+.bag-continue {
+  color: white;
+  background: #30203e;
+  border: 1px solid #65417e !important;
+}
+
+@keyframes bagSlideIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .bag-toast {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
 </style>
 </head>
-
 <body>
 <header>
   <a class="logo" href="#">DROLIX<span>BOOST</span></a>
@@ -525,5 +610,24 @@ renderServices();
 renderCombos();
 renderCart();
 </script>
+  
+<div id="bagToast" class="bag-toast" role="status"
+     aria-live="polite" hidden>
+  <div class="bag-toast-top">
+    <div class="bag-toast-icon">✓</div>
+    <div>
+      <div class="bag-toast-title">Added to your bag!</div>
+      <div id="bagToastDetail" class="bag-toast-detail"></div>
+    </div>
+  </div>
+  <div class="bag-toast-actions">
+    <button class="bag-continue" id="bagContinue" type="button">
+      Continue shopping
+    </button>
+    <button class="bag-checkout" id="bagCheckout" type="button">
+      Checkout →
+    </button>
+  </div>
+</div>
 </body>
 </html>

@@ -1,350 +1,529 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DrolixBoost | Instagram Growth Services</title>
-    <meta name="description" content="DrolixBoost - Instagram promotion, content strategy and growth services.">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DrolixBoost | Social Growth Store</title>
+<meta name="theme-color" content="#100719">
+
+<style>
+:root {
+  --bg:#0b0712; --panel:#171020; --pink:#f02c9b;
+  --purple:#8b35f1; --text:#fff; --muted:#c3b6d2;
+  --border:#382447;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;overflow-x:clip}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;overflow-x:clip
+}
+button,input,select {font:inherit}
+button {cursor:pointer}
+header {
+  position:sticky;top:0;z-index:10;background:#100a1bf5;
+  border-bottom:1px solid var(--border);padding:17px 5%;
+  display:flex;align-items:center;justify-content:space-between;gap:15px
+}
+.logo {font-size:23px;font-weight:900;letter-spacing:-1px}
+.logo span {color:#d54cff}
+nav {display:flex;gap:20px;flex-wrap:wrap}
+a {color:var(--text);text-decoration:none}
+nav a {font-size:14px;color:var(--muted)}
+.hero {
+  text-align:center;padding:72px 20px 60px;
+  background:radial-gradient(ellipse at 50% 0,#592078 0%,#190d28 44%,var(--bg) 78%)
+}
+.eyebrow {color:#f17cff;font-size:12px;font-weight:900;letter-spacing:3px}
+h1 {font-size:clamp(35px,7vw,66px);line-height:1.05;margin:18px 0}
+.gradient {
+  background:linear-gradient(90deg,#ff46ad,#b35aff,#ffcf46);
+  color:transparent;background-clip:text
+}
+.hero p {color:var(--muted);line-height:1.8;max-width:650px;margin:15px auto 25px}
+.btn {
+  border:0;border-radius:12px;padding:13px 20px;font-weight:800;
+  color:#fff;background:linear-gradient(100deg,var(--pink),var(--purple));
+  display:inline-block
+}
+.btn:hover {filter:brightness(1.12)}
+.btn.secondary {background:#24182f;border:1px solid #56376d}
+.section {max-width:1250px;margin:auto;padding:58px 22px}
+.heading {margin-bottom:27px}
+.heading h2 {font-size:clamp(25px,4vw,35px);margin:8px 0}
+.heading p {color:var(--muted);line-height:1.7}
+.tabs {display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}
+.tab {
+  padding:10px 15px;border-radius:30px;background:#191020;
+  color:#eee;border:1px solid var(--border)
+}
+.tab.active {background:linear-gradient(90deg,var(--pink),var(--purple));border-color:transparent}
+.grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.service {
+  background:linear-gradient(145deg,#21152e,#120d1a);
+  border:1px solid var(--border);border-radius:18px;padding:20px;min-width:0
+}
+.service h3 {font-size:19px;margin:0 0 7px}
+.desc {font-size:13px;color:var(--muted);margin:0 0 17px}
+.packages {display:grid;gap:9px}
+.package {
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:#0f0a17;border:1px solid #32213f;border-radius:11px;
+  padding:11px 10px;min-width:0
+}
+.package-name {font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.price {color:#ff83d0;font-weight:900;white-space:nowrap}
+.add {
+  flex-shrink:0;border:0;border-radius:8px;padding:8px 10px;
+  background:#7025a8;color:white;font-weight:800
+}
+.add:hover {background:#a52fe1}
+.combo .service {position:relative}
+.combo-label {font-size:11px;color:#f5a2ff;font-weight:900;letter-spacing:1px}
+.combo .price {font-size:30px;margin:18px 0}
+.combo ul {padding-left:19px;color:var(--muted);line-height:1.9;font-size:13px}
+.combo .add {width:100%;padding:12px;margin-top:10px}
+#cart {scroll-margin-top:90px}
+.cart-layout {display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.panel {background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;min-width:0}
+.cart-row {
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;
+  padding:13px 0;border-bottom:1px solid var(--border)
+}
+.cart-row small {display:block;color:var(--muted);margin-top:5px}
+.qty {display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button {background:#382047;color:#fff;border:0;border-radius:6px;padding:5px 10px}
+.remove {background:none;color:#ff8cbf;border:0;font-size:12px;margin-top:5px}
+.total-line {display:flex;justify-content:space-between;gap:10px;margin:15px 0}
+.total-line strong {font-size:24px;color:#ff83d0}
+.empty {color:var(--muted);line-height:1.7}
+.field {margin:14px 0}
+.field label {display:block;margin-bottom:7px;font-size:13px;color:#e4d7ed}
+.field input,.field select {
+  width:100%;min-width:0;background:#0e0915;border:1px solid #4a3458;
+  border-radius:10px;padding:13px;color:white
+}
+.check {display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:12px;line-height:1.6}
+.check input {margin-top:3px}
+#payment {scroll-margin-top:90px}
+.payment-layout {display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.qr-box {text-align:center}
+.qr-box img {width:100%;max-width:330px;border-radius:14px;background:white;padding:8px}
+.amount {font-size:40px;font-weight:900;color:#ff83d0;margin:12px 0}
+.note {font-size:12px;color:var(--muted);line-height:1.8}
+.hidden {display:none!important}
+footer {border-top:1px solid var(--border);padding:28px 20px;text-align:center;color:var(--muted);font-size:12px}
+.toast {padding:12px;border-radius:10px;background:#20341f;color:#c6ffc3;font-size:13px;line-height:1.6;margin:12px 0}
+@media(max-width:850px) {
+ .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+ .cart-layout,.payment-layout {grid-template-columns:1fr}
+}
+@media(max-width:550px) {
+ header {padding:14px;flex-wrap:wrap}
+ .logo {font-size:20px}
+ nav {gap:12px}
+ nav a {font-size:12px}
+ .hero {padding:55px 17px}
+ .section {padding:43px 15px}
+ .grid {grid-template-columns:minmax(0,1fr)}
+ .panel {padding:16px}
+ .package {gap:6px}
+ .package-name {font-size:12px}
+ .add {padding:8px}
+}
+</style>
 </head>
 
 <body>
-
-<header class="navbar">
-    <a href="#home" class="logo">DROLIX<span>BOOST</span></a>
-
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#combos">Packages</a>
-        <a href="#payment">Payment</a>
-    </nav>
-
-    <a href="#services" class="nav-btn">Get Started</a>
+<header>
+  <a class="logo" href="#">DROLIX<span>BOOST</span></a>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#combos">Combos</a>
+    <a href="#cart">Cart <span id="cartCount">0</span></a>
+    <a href="#payment">Payment</a>
+  </nav>
 </header>
 
-<main>
-
-<section class="hero" id="home">
-    <div class="hero-content">
-        <div class="tag">✦ GROW • ENGAGE • SUCCEED</div>
-
-        <h1>
-            Boost Your<br>
-            <span>Instagram Presence.</span>
-        </h1>
-
-        <p>
-            Professional Instagram promotion, content strategy
-            and growth solutions designed to help your brand reach
-            the right audience.
-        </p>
-
-        <a href="#services" class="main-btn">
-            Explore Services →
-        </a>
-
-        <div class="hero-note">
-            ⚡ Simple Ordering &nbsp; • &nbsp;
-            💳 UPI Payment &nbsp; • &nbsp;
-            📈 Growth Focused
-        </div>
-    </div>
-
-    <div class="hero-visual">
-        <div class="glow"></div>
-
-        <div class="social-card">
-            <div class="instagram-icon">◎</div>
-
-            <h2>DROLIXBOOST</h2>
-
-            <p>GROW YOUR DIGITAL PRESENCE</p>
-
-            <div class="stats">
-                <div>
-                    <strong>Reach</strong>
-                    <span>More People</span>
-                </div>
-
-                <div>
-                    <strong>Content</strong>
-                    <span>Better Strategy</span>
-                </div>
-
-                <div>
-                    <strong>Growth</strong>
-                    <span>Real Results</span>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="hero">
+  <div class="eyebrow">YOUR SOCIAL GROWTH STORE</div>
+  <h1>Boost Your <span class="gradient">Social Reach</span></h1>
+  <p>Explore service packages, combine your selections and see your total before checkout. Choose carefully and review the provider's delivery and platform-policy terms.</p>
+  <a class="btn" href="#services">Explore Services ↓</a>
 </section>
 
-
-<section class="services" id="services">
-
-    <div class="section-heading">
-        <span>WHAT WE OFFER</span>
-        <h2>Instagram Growth Services</h2>
-        <p>Choose the service that fits your growth goal.</p>
-    </div>
-
-    <div class="service-grid">
-
-        <div class="service-card">
-            <div class="service-icon">📣</div>
-
-            <h3>Instagram Promotion</h3>
-
-            <p>
-                Promote your content through legitimate
-                audience-targeted campaigns.
-            </p>
-
-            <button onclick="openOrder('Instagram Promotion')">
-                Get Started →
-            </button>
-        </div>
-
-
-        <div class="service-card">
-            <div class="service-icon">🎬</div>
-
-            <h3>Reel Promotion</h3>
-
-            <p>
-                Improve the reach of your Reels using
-                audience-focused promotion.
-            </p>
-
-            <button onclick="openOrder('Reel Promotion')">
-                Get Started →
-            </button>
-        </div>
-
-
-        <div class="service-card">
-            <div class="service-icon">✨</div>
-
-            <h3>Content Strategy</h3>
-
-            <p>
-                Get practical recommendations for content,
-                posting and audience growth.
-            </p>
-
-            <button onclick="openOrder('Content Strategy')">
-                Get Started →
-            </button>
-        </div>
-
-
-        <div class="service-card">
-            <div class="service-icon">🎨</div>
-
-            <h3>Content Creation</h3>
-
-            <p>
-                Creative support for social posts, Reels
-                and promotional content.
-            </p>
-
-            <button onclick="openOrder('Content Creation')">
-                Get Started →
-            </button>
-        </div>
-
-    </div>
+<section class="section" id="services">
+  <div class="heading">
+    <div class="eyebrow">CHOOSE YOUR SERVICE</div>
+    <h2>Social Media Packages</h2>
+    <p>Select any number of different packages. Every selection will be added to your cart.</p>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="serviceGrid"></div>
 </section>
 
-
-<section class="combos" id="combos">
-
-    <div class="section-heading">
-        <span>POPULAR PACKAGES</span>
-        <h2>DrolixBoost Growth Packages</h2>
-        <p>Simple packages for different growth goals.</p>
-    </div>
-
-    <div class="combo-grid">
-
-        <div class="combo-card">
-            <span class="badge">STARTER</span>
-            <h3>Starter Promotion</h3>
-
-            <ul>
-                <li>Promotion consultation</li>
-                <li>Target audience planning</li>
-                <li>Content recommendations</li>
-            </ul>
-
-            <div class="price">₹199</div>
-
-            <button onclick="openOrder('Starter Promotion - ₹199')">
-                Order Now
-            </button>
-        </div>
-
-
-        <div class="combo-card featured">
-            <span class="badge">POPULAR</span>
-            <h3>Growth Booster</h3>
-
-            <ul>
-                <li>Campaign planning</li>
-                <li>Reel promotion strategy</li>
-                <li>Audience targeting guidance</li>
-            </ul>
-
-            <div class="price">₹499</div>
-
-            <button onclick="openOrder('Growth Booster - ₹499')">
-                Order Now
-            </button>
-        </div>
-
-
-        <div class="combo-card">
-            <span class="badge">PREMIUM</span>
-            <h3>Ultimate Growth</h3>
-
-            <ul>
-                <li>Complete growth strategy</li>
-                <li>Content planning</li>
-                <li>Promotion consultation</li>
-                <li>Performance review</li>
-            </ul>
-
-            <div class="price">₹999</div>
-
-            <button onclick="openOrder('Ultimate Growth - ₹999')">
-                Order Now
-            </button>
-        </div>
-
-    </div>
+<section class="section combo" id="combos">
+  <div class="heading">
+    <div class="eyebrow">SAVE WITH BUNDLES</div>
+    <h2>Combo Offers 🔥</h2>
+    <p>Add a combo alongside individual services. The combo price is charged as listed.</p>
+  </div>
+  <div class="grid" id="comboGrid"></div>
 </section>
 
-
-<section class="payment" id="payment">
-
-    <div class="section-heading">
-        <span>UPI PAYMENT</span>
-        <h2>Pay Securely</h2>
-        <p>Scan the QR code using any supported UPI application.</p>
+<section class="section" id="cart">
+  <div class="heading">
+    <div class="eyebrow">YOUR SELECTION</div>
+    <h2>Shopping Cart 🛒</h2>
+    <p>Review your packages and quantities before continuing.</p>
+  </div>
+  <div class="cart-layout">
+    <div class="panel">
+      <div id="cartItems"><p class="empty">Your cart is empty. Add packages above to get started.</p></div>
+      <button class="btn secondary" id="clearCart" type="button">Clear Cart</button>
     </div>
-
-    <div class="payment-box">
-
-        <img
-            src="GooglePay_QR.png"
-            alt="DrolixBoost UPI QR Code"
-            class="qr"
-        >
-
-        <h3>UPI ID</h3>
-
-        <p class="upi-id">
-            devatheerthb@okhdfcbank
-        </p>
-
-        <button onclick="copyUPI()">
-            Copy UPI ID
-        </button>
-
-        <p class="payment-note">
-            After payment, keep your transaction reference.
-            Your order is confirmed only after payment verification.
-        </p>
-
+    <div class="panel">
+      <h3>Order Details</h3>
+      <div class="field">
+        <label for="instagram">Instagram username or profile URL</label>
+        <input id="instagram" placeholder="@yourusername" required>
+      </div>
+      <div class="field">
+        <label for="customerName">Your name</label>
+        <input id="customerName" placeholder="Enter your name" required>
+      </div>
+      <div class="field">
+        <label for="contact">Contact number or email</label>
+        <input id="contact" placeholder="How can we contact you?" required>
+      </div>
+      <div class="total-line"><span>Subtotal</span><b id="subtotal">₹0</b></div>
+      <div class="total-line"><span>Delivery fee</span><b>₹0</b></div>
+      <div class="total-line"><span>Total payable</span><strong id="cartTotal">₹0</strong></div>
+      <button class="btn" style="width:100%" id="checkout" type="button">Continue to Payment →</button>
+      <p class="note">Continuing does not mean payment is verified or an order has been accepted.</p>
     </div>
+  </div>
 </section>
 
-
-<section class="order-section" id="order">
-
-    <div class="section-heading">
-        <span>ORDER</span>
-        <h2>Start Your Order</h2>
-        <p>Tell us what you need and we'll contact you.</p>
+<section class="section hidden" id="payment">
+  <div class="heading">
+    <div class="eyebrow">UPI CHECKOUT</div>
+    <h2>Pay for Your Order</h2>
+    <p>Scan the QR code using your UPI app and enter the exact amount shown below.</p>
+  </div>
+  <div class="payment-layout">
+    <div class="panel qr-box">
+      <img src="GooglePay_QR.png" alt="DrolixBoost UPI payment QR code">
+      <h3>Scan to Pay</h3>
+      <div class="amount" id="payAmount">₹0</div>
+      <p class="note">Verify the recipient name in your UPI app before paying.</p>
+      <button class="btn secondary" id="copyUpi" type="button">Copy UPI ID</button>
+      <p id="upiText">devatheerthb@okhdfcbank</p>
+      <a class="btn" id="payApp" href="#">Open UPI App</a>
     </div>
-
-    <form id="orderForm" class="order-form">
-
-        <label>
-            Selected Service
-            <input
-                type="text"
-                id="selectedService"
-                name="service"
-                readonly
-                placeholder="Choose a service above"
-                required
-            >
-        </label>
-
-        <label>
-            Instagram Profile / Post URL
-            <input
-                type="url"
-                name="instagram"
-                placeholder="https://instagram.com/..."
-                required
-            >
-        </label>
-
-        <label>
-            Your Name
-            <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                required
-            >
-        </label>
-
-        <label>
-            WhatsApp Number
-            <input
-                type="tel"
-                name="phone"
-                placeholder="Your WhatsApp number"
-                required
-            >
-        </label>
-
-        <label>
-            UPI Transaction Reference
-            <input
-                type="text"
-                name="transaction"
-                placeholder="Enter payment reference"
-                required
-            >
-        </label>
-
-        <button type="submit" class="main-btn">
-            Submit Order →
-        </button>
-
-        <p id="orderMessage" class="order-message"></p>
-
-    </form>
+    <div class="panel">
+      <h3>Order Summary</h3>
+      <div id="paymentSummary"></div>
+      <div class="total-line"><span>Total to pay</span><strong id="finalTotal">₹0</strong></div>
+      <div class="field">
+        <label for="txn">UPI transaction/reference ID</label>
+        <input id="txn" placeholder="Enter after completing payment">
+      </div>
+      <label class="check">
+        <input type="checkbox" id="paymentConfirm">
+        <span>I have completed the payment and checked the recipient and amount.</span>
+      </label>
+      <button class="btn" style="width:100%;margin-top:17px" id="finish" type="button">Prepare Order Details</button>
+      <div id="orderResult"></div>
+      <p class="note">This static website cannot verify payments or save orders on a server. The details prepared below must be sent to the store owner through a configured contact channel. Do not share UPI PINs or OTPs.</p>
+      <button class="btn secondary" style="width:100%;margin-top:8px" id="backToCart" type="button">← Back to Cart</button>
+    </div>
+  </div>
 </section>
-
-</main>
-
 
 <footer>
-    <a href="#home" class="logo">DROLIX<span>BOOST</span></a>
-
-    <p>
-        © 2026 DrolixBoost. All rights reserved.
-    </p>
+  DrolixBoost · Social Growth Store<br>
+  Prices are in INR. Delivery and results depend on the service provider.
+  Use services in accordance with Instagram's terms and applicable rules.
 </footer>
 
+<script>
+const services = [
+ {name:"Views",icon:"▶️",items:[
+  ["5K Views",29],["10K Views",49],["50K Views",149],
+  ["100K Views",239],["500K Views",699],["1M Views",1199]]},
+ {name:"Likes",icon:"❤️",items:[
+  ["200 Likes",19],["500 Likes",39],["1K Likes",59],
+  ["5K Likes",129],["10K Likes",229],["50K Likes",829]]},
+ {name:"Comments",icon:"💬",items:[
+  ["10 Comments",12],["50 Comments",42],["100 Comments",72],
+  ["500 Comments",299],["1K Comments",599]]},
+ {name:"Shares",icon:"📤",items:[
+  ["200 Shares",19],["500 Shares",39],["1K Shares",59],
+  ["5K Shares",129],["10K Shares",229]]},
+ {name:"Saves",icon:"🔖",items:[
+  ["100 Saves",29],["300 Saves",49],["500 Saves",69],
+  ["1K Saves",129],["5K Saves",499]]},
+ {name:"Repost",icon:"🔁",items:[
+  ["100 Repost",29],["300 Repost",49],["500 Repost",69],
+  ["1K Repost",139],["5K Repost",499]]},
+ {name:"Followers — Low Drop",icon:"👥",items:[
+  ["100 Followers",59],["300 Followers",169],["500 Followers",279],
+  ["1K Followers",419],["5K Followers",1999]]},
+ {name:"Followers — High Drop",icon:"👥",items:[
+  ["100 Followers",29],["300 Followers",69],["500 Followers",99],
+  ["1K Followers",169],["5K Followers",729]]}
+];
 
-<script src="script.js"></script>
+const combos = [
+ {name:"Basic Growth Pack",label:"POPULAR",items:["10K Views","2K Likes"],price:99},
+ {name:"Engagement Booster",label:"BEST VALUE",items:["50K Views","8K Likes"],price:289},
+ {name:"Viral Explosion",label:"PREMIUM",items:["120K Views","40K Likes"],price:849},
+ {name:"Starter Growth",label:"STARTER",items:["5K Views","1K Likes","100 Comments"],price:179},
+ {name:"Engagement Pro",label:"ENGAGEMENT",items:["10K Views","5K Likes","300 Saves"],price:249},
+ {name:"Social Boost",label:"SOCIAL",items:["50K Views","10K Likes","500 Shares"],price:499},
+ {name:"Ultimate Growth",label:"ULTIMATE",items:["100K Views","20K Likes","1K Comments","1K Saves"],price:799},
+ {name:"Viral Package",label:"VIRAL",items:["500K Views","50K Likes","5K Shares","5K Saves","5K Repost"],price:1499}
+];
 
+const cart = new Map();
+let selectedCategory = "All";
+let currentOrder = null;
+const money = n => "₹" + n.toLocaleString("en-IN");
+
+function makeId(name, label) { return name + "::" + label; }
+
+function addItem(name, label, price) {
+ const id = makeId(name,label);
+ if(cart.has(id)) cart.get(id).qty++;
+ else cart.set(id,{id,name,label,price,qty:1});
+ renderCart();
+}
+
+function renderTabs() {
+ const tabs = document.getElementById("tabs");
+ tabs.replaceChildren();
+ ["All",...services.map(s=>s.name)].forEach(name=>{
+  const b=document.createElement("button");
+  b.className="tab"+(selectedCategory===name?" active":"");
+  b.textContent=name;
+  b.type="button";
+  b.onclick=()=>{selectedCategory=name;renderTabs();renderServices()};
+  tabs.appendChild(b);
+ });
+}
+
+function renderServices() {
+ const grid=document.getElementById("serviceGrid");
+ grid.replaceChildren();
+ services.filter(s=>selectedCategory==="All"||s.name===selectedCategory)
+ .forEach(s=>{
+  const card=document.createElement("article");
+  card.className="service";
+  const title=document.createElement("h3");
+  title.textContent=s.icon+" "+s.name;
+  const desc=document.createElement("p");
+  desc.className="desc";
+  desc.textContent="Choose a package to add to your cart.";
+  const list=document.createElement("div");
+  list.className="packages";
+  s.items.forEach(([label,price])=>{
+   const row=document.createElement("div");
+   row.className="package";
+   const name=document.createElement("span");
+   name.className="package-name";
+   name.textContent=label;
+   const cost=document.createElement("span");
+   cost.className="price";
+   cost.textContent=money(price);
+   const add=document.createElement("button");
+   add.className="add";
+   add.textContent="+ Add";
+   add.type="button";
+   add.onclick=()=>addItem(s.name,label,price);
+   row.append(name,cost,add);
+   list.appendChild(row);
+  });
+  card.append(title,desc,list);
+  grid.appendChild(card);
+ });
+}
+
+function renderCombos() {
+ const grid=document.getElementById("comboGrid");
+ grid.replaceChildren();
+ combos.forEach(c=>{
+  const card=document.createElement("article");
+  card.className="service";
+  const label=document.createElement("div");
+  label.className="combo-label";
+  label.textContent="✦ "+c.label;
+  const title=document.createElement("h3");
+  title.style.marginTop="14px";
+  title.textContent=c.name;
+  const list=document.createElement("ul");
+  c.items.forEach(item=>{
+   const li=document.createElement("li");
+   li.textContent=item;
+   list.appendChild(li);
+  });
+  const price=document.createElement("div");
+  price.className="price";
+  price.textContent=money(c.price);
+  const add=document.createElement("button");
+  add.className="add";
+  add.textContent="Add Combo +";
+  add.type="button";
+  add.onclick=()=>addItem("Combo",c.name,c.price);
+  card.append(label,title,list,price,add);
+  grid.appendChild(card);
+ });
+}
+
+function renderCart() {
+ const box=document.getElementById("cartItems");
+ box.replaceChildren();
+ let count=0,total=0;
+ cart.forEach(item=>{
+  count+=item.qty;
+  total+=item.price*item.qty;
+  const row=document.createElement("div");
+  row.className="cart-row";
+  const left=document.createElement("div");
+  const title=document.createElement("b");
+  title.textContent=item.label;
+  const sub=document.createElement("small");
+  sub.textContent=item.name+" · "+money(item.price)+" each";
+  const qty=document.createElement("div");
+  qty.className="qty";
+  const minus=document.createElement("button");
+  minus.textContent="−";
+  minus.type="button";
+  minus.onclick=()=>{if(item.qty>1)item.qty--;else cart.delete(item.id);renderCart()};
+  const number=document.createElement("span");
+  number.textContent=item.qty;
+  const plus=document.createElement("button");
+  plus.textContent="+";
+  plus.type="button";
+  plus.onclick=()=>{item.qty++;renderCart()};
+  qty.append(minus,number,plus);
+  const remove=document.createElement("button");
+  remove.className="remove";
+  remove.textContent="Remove";
+  remove.type="button";
+  remove.onclick=()=>{cart.delete(item.id);renderCart()};
+  left.append(title,sub,qty,remove);
+  const price=document.createElement("b");
+  price.textContent=money(item.price*item.qty);
+  row.append(left,price);
+  box.appendChild(row);
+ });
+ if(count===0){
+  const empty=document.createElement("p");
+  empty.className="empty";
+  empty.textContent="Your cart is empty. Add packages above to get started.";
+  box.appendChild(empty);
+ }
+ document.getElementById("cartCount").textContent=count;
+ document.getElementById("subtotal").textContent=money(total);
+ document.getElementById("cartTotal").textContent=money(total);
+}
+
+document.getElementById("clearCart").onclick=()=>{
+ cart.clear();renderCart();
+};
+document.getElementById("checkout").onclick=()=>{
+ if(cart.size===0){alert("Please add at least one package first.");return}
+ const username=document.getElementById("instagram").value.trim();
+ const name=document.getElementById("customerName").value.trim();
+ const contact=document.getElementById("contact").value.trim();
+ if(!username||!name||!contact){
+  alert("Please enter your Instagram profile, name and contact details.");
+  return;
+ }
+ currentOrder={
+  username,name,contact,
+  items:Array.from(cart.values()).map(i=>({...i})),
+  total:Array.from(cart.values()).reduce((sum,i)=>sum+i.price*i.qty,0)
+ };
+ document.getElementById("payAmount").textContent=money(currentOrder.total);
+ document.getElementById("finalTotal").textContent=money(currentOrder.total);
+ const summary=document.getElementById("paymentSummary");
+ summary.replaceChildren();
+ currentOrder.items.forEach(i=>{
+  const row=document.createElement("div");
+  row.className="total-line";
+  const label=document.createElement("span");
+  label.textContent=i.label+" × "+i.qty;
+  const price=document.createElement("b");
+  price.textContent=money(i.price*i.qty);
+  row.append(label,price);
+  summary.appendChild(row);
+ });
+ const params=new URLSearchParams({
+  pa:"devatheerthb@okhdfcbank",
+  pn:"DrolixBoost",
+  am:currentOrder.total.toFixed(2),
+  cu:"INR",
+  tn:"DrolixBoost order"
+ });
+ document.getElementById("payApp").href="upi://pay?"+params.toString();
+ document.getElementById("payment").classList.remove("hidden");
+ document.getElementById("orderResult").replaceChildren();
+ document.getElementById("txn").value="";
+ document.getElementById("paymentConfirm").checked=false;
+ document.getElementById("payment").scrollIntoView({behavior:"smooth"});
+};
+document.getElementById("backToCart").onclick=()=>{
+ document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+};
+document.getElementById("copyUpi").onclick=async()=>{
+ try {
+  await navigator.clipboard.writeText("devatheerthb@okhdfcbank");
+  alert("UPI ID copied.");
+ } catch(e) {
+  prompt("Copy this UPI ID","devatheerthb@okhdfcbank");
+ }
+};
+document.getElementById("finish").onclick=async()=>{
+ if(!currentOrder){alert("Please prepare an order first.");return}
+ if(!document.getElementById("paymentConfirm").checked){
+  alert("Please confirm that you completed payment before preparing the order details.");
+  return;
+ }
+ const txn=document.getElementById("txn").value.trim();
+ if(!txn){alert("Please enter the UPI transaction/reference ID.");return}
+ const lines=[
+  "DROLIXBOOST ORDER — PAYMENT REQUIRES MANUAL VERIFICATION",
+  "Name: "+currentOrder.name,
+  "Instagram: "+currentOrder.username,
+  "Contact: "+currentOrder.contact,
+  ...currentOrder.items.map(i=>i.label+" × "+i.qty+" — "+money(i.price*i.qty)),
+  "Total: "+money(currentOrder.total),
+  "UPI transaction ID: "+txn,
+  "Please verify the payment in the receiving bank account before confirming this order."
+ ];
+ const text=lines.join("\n");
+ const result=document.getElementById("orderResult");
+ result.replaceChildren();
+ const note=document.createElement("div");
+ note.className="toast";
+ note.textContent="Order details prepared. They have not been sent or stored automatically.";
+ const copy=document.createElement("button");
+ copy.className="btn";
+ copy.type="button";
+ copy.textContent="Copy Order Details";
+ copy.onclick=async()=>{
+  try{await navigator.clipboard.writeText(text);alert("Order details copied. Send them to the store owner.");}
+  catch(e){prompt("Copy order details below:",text)}
+ };
+ result.append(note,copy);
+};
+renderTabs();
+renderServices();
+renderCombos();
+renderCart();
+</script>
 </body>
 </html>

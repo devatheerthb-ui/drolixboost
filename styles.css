@@ -1,0 +1,386 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #09090f;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d0d16;
+    border-bottom: 1px solid #242333;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #a855f7;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 35px;
+}
+
+.navbar nav a {
+    color: #aaa9bb;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #c084fc;
+}
+
+.nav-btn {
+    padding: 13px 22px;
+    border: 1px solid #a855f7;
+    border-radius: 8px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: #a855f7;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 570px;
+    padding: 80px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    background:
+        radial-gradient(ellipse at 15% 40%, #25113f 0%, transparent 48%),
+        #09090f;
+}
+
+.hero-content {
+    max-width: 570px;
+}
+
+.tag {
+    display: inline-block;
+    color: #c084fc;
+    background: #211432;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #a855f7;
+}
+
+.hero-content > p {
+    color: #aaa9bb;
+    line-height: 1.8;
+    margin: 22px 0 30px;
+    max-width: 460px;
+}
+
+.main-btn {
+    display: inline-block;
+    background: linear-gradient(120deg, #9333ea, #6d28d9);
+    padding: 16px 27px;
+    border-radius: 9px;
+    font-weight: bold;
+    box-shadow: 0 8px 30px #9333ea35;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 35px #9333ea70;
+}
+
+.hero-note {
+    color: #858397;
+    font-size: 12px;
+    margin-top: 27px;
+}
+
+/* HERO VISUAL */
+
+.hero-visual {
+    position: relative;
+    width: 380px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #9333ea;
+    filter: blur(130px);
+    opacity: 0.3;
+}
+
+.social-card {
+    position: relative;
+    width: 100%;
+    padding: 38px 25px;
+    background: linear-gradient(145deg, #20152e, #11111b);
+    border: 1px solid #51316c;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 20px 60px #00000070;
+}
+
+.instagram-icon {
+    font-size: 65px;
+    color: #d8a4ff;
+    margin-bottom: 15px;
+}
+
+.social-card h2 {
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.social-card > p {
+    color: #aaa9bb;
+    font-size: 11px;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.stats {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.stats div {
+    padding: 14px 5px;
+    background: #ffffff08;
+    border-radius: 10px;
+}
+
+.stats strong {
+    display: block;
+    color: #c084fc;
+    font-size: 13px;
+}
+
+.stats span {
+    display: block;
+    color: #aaa9bb;
+    font-size: 9px;
+    margin-top: 8px;
+}
+
+/* SERVICES */
+
+.services {
+    padding: 90px 9%;
+    background: #0d0d16;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading > span,
+.about > span {
+    color: #c084fc;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.section-heading h2,
+.about h2 {
+    font-size: 36px;
+    margin: 15px 0;
+}
+
+.section-heading p,
+.about p {
+    color: #9998aa;
+    font-size: 14px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.service-card {
+    padding: 28px 22px;
+    border-radius: 15px;
+    border: 1px solid #292536;
+    background: linear-gradient(145deg, #171522, #101019);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: #a855f7;
+    box-shadow: 0 12px 35px #9333ea20;
+}
+
+.service-icon {
+    font-size: 38px;
+    color: #c084fc;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #9998aa;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 65px;
+}
+
+.service-card a {
+    display: inline-block;
+    color: #c084fc;
+    font-size: 13px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* ABOUT */
+
+.about {
+    text-align: center;
+    padding: 85px 20px;
+    background: radial-gradient(ellipse at center, #241039, #09090f 70%);
+}
+
+.about h2 {
+    margin-top: 20px;
+}
+
+footer {
+    padding: 30px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d0d16;
+    border-top: 1px solid #242333;
+}
+
+footer p {
+    color: #858397;
+    font-size: 12px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+    .hero {
+        padding: 65px 7%;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-visual {
+        width: 320px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 0 5%;
+        height: 75px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-btn {
+        font-size: 11px;
+        padding: 11px 13px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 7%;
+    }
+
+    .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-visual {
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .services {
+        padding: 65px 6%;
+    }
+
+    .section-heading h2,
+    .about h2 {
+        font-size: 28px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
